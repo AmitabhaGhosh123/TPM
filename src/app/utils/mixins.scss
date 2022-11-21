@@ -1,0 +1,9 @@
+
+/* this is a fontsize mixin */
+@mixin fontsize($size, $height, $weight, $spacing, $family) {
+  font-size: $size + px;
+  line-height: $height + px;
+  font-weight: $weight;
+  letter-spacing: $spacing + px;
+  font-family: $family;
+}

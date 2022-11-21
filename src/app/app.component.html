@@ -1,0 +1,270 @@
+<div class="heading mb-2 mx-2">Offer Extended</div>
+
+<mat-table class="mat-elevation-z8" [dataSource]="candidateOfferExtended">
+  <ng-container matColumnDef="candidateDetails">
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div>
+        <img src="/assets/profile-picture.png"  alt="" />
+      </div>
+      <div class="row">
+        <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="interviewSchedule">
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['left-arrow']"></div>
+      <ng-container *ngIf="candidate.interviewSchedule['candidate-photo'] else candidateInfo">
+        <div class="row">
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+        </div>
+      </ng-container>
+      
+      <ng-template #candidateInfo>
+        <div class="row">
+          <div class="offer-extended-text">{{candidate.hiringInfo.offerExtended}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.offerExtendeDate}}</div>
+        </div>
+
+        <div class="row">
+          <div class="offer-extended-text">{{candidate.hiringInfo.offerAccepted}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.offerAcceptedDate}}</div>
+        </div>
+
+        <div class="row">
+          <div class="offer-extended-text">{{candidate.hiringInfo.dateOfJoining}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.joiningDate}}</div>
+        </div>
+
+        <div class="row">
+          <div class="offer-extended-text">{{candidate.hiringInfo.joiningStatus}}</div>
+          <div [innerHTML]="candidate.hiringInfo.joinedRatingImg"></div>
+        </div>
+
+        <div class="row">
+          <div class="offer-extended-text">{{candidate.hiringInfo.backgroundVerification}}</div>
+          <div [innerHTML]="candidate.hiringInfo.joinedRatingImg"></div>
+        </div>
+      </ng-template>
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['right-arrow']"></div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="comments">
+    <mat-cell *matCellDef="let candidate; let i = index" class="comments">
+      <div>
+        {{candidate.comments}}
+      </div>
+      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="/assets/dots.png" alt="" />
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+        <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+      </ul>
+    </mat-cell>
+  </ng-container>
+
+  <mat-row *matRowDef="let row; columns: displayedColumnsOfferExtended; let i = index" class="mat-row-border"></mat-row>
+</mat-table>
+
+<div class="heading mb-2 mx-2">Prospects</div>
+
+<mat-table class="mat-elevation-z8" [dataSource]="candidateInformation" cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="swap($event)">
+
+  <ng-container matColumnDef="candidateDetails">
+    <mat-header-cell *matHeaderCellDef>CANDIDATE DETAILS</mat-header-cell>
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div *ngIf="i > 0" class="swap-link">
+        <ng-container *ngIf="isSelected && selectedIndex == i">
+          <img src="/assets/swap.png"  alt="" />
+        </ng-container>
+      </div>
+      <div *ngIf="i > 0">
+        <img src="/assets/profile-picture.png"  alt="" />
+      </div>
+      <div class="row">
+        <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="interviewSchedule">
+    <mat-header-cell *matHeaderCellDef>INTERVIEW SCHEDULE</mat-header-cell>
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['left-arrow']"></div>
+      <ng-container *ngIf="candidate.interviewSchedule['candidate-photo'] else candidateInfo">
+        <div class="row">
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+        </div>
+      </ng-container>
+      
+      <ng-template #candidateInfo>
+        <div class="row hiring-decision">
+          <div class="candidate-hire" [innerHTML]="candidate.interviewSchedule['like-part1-img']+candidate.interviewSchedule['like-part2-img']"></div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.hired}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+        </div>
+
+        <div class="row">
+          <div class="feedback-awaiting">Awaiting</div>
+          <div class="feedback-awaiting">Feedback</div>
+        </div>
+
+        <div class="row" [ngClass]="{'hiring-decision': i !== 2}">
+          <div *ngIf="candidate.hiringInfo['oval-img']" [innerHTML]="candidate.hiringInfo['oval-img']"></div>
+          <div *ngIf="candidate.hiringInfo['rect-img']" class="rect-img" [innerHTML]="candidate.hiringInfo['rect-img']"></div>
+          <div *ngIf="candidate.hiringInfo['dislike-part1-img'] && candidate.hiringInfo['dislike-part2-img']" [innerHTML]="candidate.hiringInfo['dislike-part1-img']+candidate.hiringInfo['dislike-part2-img']"></div>
+          <div class="feedback-awaiting">{{candidate.hiringInfo.hiringUndecided}}</div>
+          <div class="feedback-awaiting">{{candidate.hiringInfo['hire-date']}}</div>
+        </div>
+
+        <div class="row">
+          <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+          <div class="feedback-awaiting date">{{candidate.hiringInfo.date}}</div>
+        </div>
+      </ng-template>
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['right-arrow']"></div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="referenceCheck">
+    <mat-header-cell *matHeaderCellDef>REFERENCE CHECK</mat-header-cell>
+    <mat-cell *matCellDef="let candidate">
+        <div class="text-leads">
+          {{candidate.referenceCheck.txt1}}
+        </div>
+
+        <div class="text-captured">
+          {{candidate.referenceCheck.txt2}}
+        </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="comments">
+    <mat-header-cell *matHeaderCellDef>COMMENTS</mat-header-cell>
+    <mat-cell *matCellDef="let candidate; let i = index" class="comments">
+      <div>
+        {{candidate.comments}}
+      </div>
+
+      <div class="dropdown" *ngIf="i > 0">
+        <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/assets/dots.png" alt="" />
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+          <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+        </ul>
+      </div>
+
+      <!-- <ng-container *ngIf="toggleAction">
+        <div class="row row-actions" *ngIf="selectedIndex == i">
+          <div class="box-options">EDIT COMMENT</div>
+          <div class="box-options">HIRE CANDIDATE</div>
+        </div>
+      </ng-container> -->
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" [ngClass]="i == 0 ? 'no-border': 'mat-row-border'" (click)="selectRow(i)" cdkDrag></mat-row>
+</mat-table>
+
+<div class="heading mb-2 mx-2">Dropped</div>
+
+<mat-table class="mat-elevation-z8" [dataSource]="candidateDroppedInformation">
+  <ng-container matColumnDef="candidateDetails">
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div>
+        <img src="/assets/avatar.png"  alt="" />
+      </div>
+      <div class="row">
+        <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+        <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="interviewSchedule">
+    <mat-cell *matCellDef="let candidate; let i = index">
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['left-arrow']"></div>
+      <ng-container *ngIf="candidate.interviewSchedule['candidate-photo'] else candidateInfo">
+        <div class="row">
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+          <div class="col-md-3" [innerHTML]="candidate.interviewSchedule['candidate-photo']"></div>
+        </div>
+      </ng-container>
+      
+      <ng-template #candidateInfo>
+        <div class="row hiring-decision">
+          <div class="candidate-hire" [innerHTML]="candidate.interviewSchedule['dislike-part1-img']+candidate.interviewSchedule['dislike-part2-img']"></div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.hiringUndecided}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+        </div>
+
+        <div class="row">
+          <div class="candidate-hire" [innerHTML]="candidate.interviewSchedule['dislike-part1-img']+candidate.interviewSchedule['dislike-part2-img']"></div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo.hiringUndecided}}</div>
+          <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+        </div>
+
+        <div class="row hiring-decision">
+          <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+          <div class="feedback-awaiting date">{{candidate.hiringInfo.date}}</div>
+        </div>
+
+        <div class="row">
+          <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+          <div class="feedback-awaiting date">{{candidate.hiringInfo.date}}</div>
+        </div>
+      </ng-template>
+      <div class="mx-1" [innerHTML]="candidate.interviewSchedule['right-arrow']"></div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="referenceCheck">
+    <mat-cell *matCellDef="let candidate">
+        <div class="text-leads">
+          {{candidate.referenceCheck.txt1}}
+        </div>
+
+        <div class="text-captured">
+          {{candidate.referenceCheck.txt2}}
+        </div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="comments">
+    <mat-cell *matCellDef="let candidate; let i = index" class="comments">
+      <div>
+        {{candidate.comments}}
+      </div>
+      <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="/assets/dots.png" alt="" />
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+        <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+      </ul>
+
+    </mat-cell>
+  </ng-container>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" class="mat-row-border"></mat-row>
+</mat-table>
