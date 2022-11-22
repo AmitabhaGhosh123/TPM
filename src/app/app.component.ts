@@ -37,7 +37,7 @@ export class AppComponent {
     {
       'candidateDetails': {'name':'Aniket Joshi','designation': 'Director, Piramal Enterprises','city': 'Mumbai'},
       'interviewSchedule': {'left-arrow': '','right-arrow':'','like-part1-img': '<img src="/assets/like-symbol-part1.png" />','like-part2-img': '<img src="/assets/like-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'Undecided','oval-img':'<img src="/assets/oval.png" />','rect-img':'<img src="/assets/rectangle.png" />','calendar-date-img':'<img src="/assets/calendar.png" />'},
+      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'Undecided','undecided-img':'<img src="/assets/undecided.png" />','calendar-date-img':'<img src="/assets/calendar.png" />'},
       'referenceCheck': {'txt1': 7,'txt2': 3},
       'comments': 'Metus etiam. Platea aliquet vulputate. Egestas. Lacinia ultrices. Pharetra. Quisque odio morbi sod tea aliquet vulputate.teamelatea aliquet vulputate. Egestas. Lacinia ultrices QuisqueQuisqueQuisqueQuklloojjdjuee'
     },

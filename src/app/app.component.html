@@ -143,8 +143,7 @@
         </div>
 
         <div class="row" [ngClass]="{'hiring-decision': i !== 2}">
-          <div *ngIf="candidate.hiringInfo['oval-img']" [innerHTML]="candidate.hiringInfo['oval-img']"></div>
-          <div *ngIf="candidate.hiringInfo['rect-img']" class="rect-img" [innerHTML]="candidate.hiringInfo['rect-img']"></div>
+          <div *ngIf="candidate.hiringInfo['undecided-img']" [innerHTML]="candidate.hiringInfo['undecided-img']"></div>
           <div *ngIf="candidate.hiringInfo['dislike-part1-img'] && candidate.hiringInfo['dislike-part2-img']" [innerHTML]="candidate.hiringInfo['dislike-part1-img']+candidate.hiringInfo['dislike-part2-img']"></div>
           <div class="feedback-awaiting">{{candidate.hiringInfo.hiringUndecided}}</div>
           <div class="feedback-awaiting">{{candidate.hiringInfo['hire-date']}}</div>
