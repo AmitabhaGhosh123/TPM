@@ -71,7 +71,7 @@ export class AppComponent {
     {
       'candidateDetails': {'name':'Anil Kapoor','designation': 'Director, Piramal Enterprises','city': 'Kolkatta'},
       'interviewSchedule': {'left-arrow': '','right-arrow':'','dislike-part1-img':'<img src="/assets/dislike-symbol-part1.png" />','dislike-part2-img':'<img src="/assets/dislike-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'offerExtendeDate':'21 Jul 2020','offerAcceptedDate':'23 Jul 2020','joiningDate':'1 Sep 2020','joinedRatingImg':'<img src="/assets/icon-rating.png" />','offerExtended':'Offer Extended on','offerAccepted':'Offer Accepted on','dateOfJoining':'Date of Joining','joiningStatus':'Joining Status','backgroundVerification':'B.V'},
+      'hiringInfo': {'offerExtendeDate':'21 Jul 2020','offerAcceptedDate':'23 Jul 2020','joiningDate':'1 Sep 2020','joinedRatingImg':'<img src="/assets/icon-rating.png" />','link-arrow':'<img src="/assets/dropdown-arrow.png" />','offerExtended':'Offer Extended on','offerAccepted':'Offer Accepted on','dateOfJoining':'Date of Joining','joiningStatus':'Joining Status','backgroundVerification':'B.V'},
       'comments': 'Metus etiam. Platea aliquet vulputate. Egestas. Lacinia ultrices. Pharetra. Quisque odio morbi sod tea aliquet vulputate.teame'
     }
   ]

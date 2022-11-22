@@ -113,11 +113,15 @@
   border: 1px solid $candidate-row-border-color;
 }
 
+.rating-menu {
+  min-width: 0px;
+}
+
 /* START OF DROPDOWN STYLES */
 
 .dropdown {
   &-toggle {
-    &::after {
+    &:after {
       border-width: 0;
     }
   }

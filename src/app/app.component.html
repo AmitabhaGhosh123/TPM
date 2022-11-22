@@ -44,12 +44,32 @@
 
         <div class="row">
           <div class="offer-extended-text">{{candidate.hiringInfo.joiningStatus}}</div>
-          <div [innerHTML]="candidate.hiringInfo.joinedRatingImg"></div>
+          <div>
+            <img src="/assets/icon-rating.png" alt="" />
+              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="/assets/dropdown-arrow.png" alt="" />
+              </a>
+              <ul class="dropdown-menu rating-menu">
+                <li><a class="dropdown-item" href="#"><img src="/assets/icon-rating.png" alt="" /></a></li>
+                <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-average.png" alt="" /></a></li>
+                <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-rework.png" alt="" /></a></li>
+              </ul>
+            </div>
         </div>
 
         <div class="row">
           <div class="offer-extended-text">{{candidate.hiringInfo.backgroundVerification}}</div>
-          <div [innerHTML]="candidate.hiringInfo.joinedRatingImg"></div>
+          <div>
+            <img src="/assets/icon-rating.png" alt="" />
+            <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/assets/dropdown-arrow.png" alt="" />
+            </a>
+            <ul class="dropdown-menu rating-menu">
+             <li><a class="dropdown-item" href="#"><img src="/assets/icon-rating.png" alt="" /></a></li>
+              <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-average.png" alt="" /></a></li>
+              <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-rework.png" alt="" /></a></li>
+            </ul>
+          </div>
         </div>
       </ng-template>
       <div class="mx-1" [innerHTML]="candidate.interviewSchedule['right-arrow']"></div>
