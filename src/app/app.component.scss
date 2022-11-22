@@ -14,15 +14,14 @@
 }
 
 .mat-cell {
-  overflow: inherit;
-  justify-content: space-between;
-}
-
-/* END OF MATERIAL STYLES */
-
-.no-border {
-  border: 0;
-  padding-bottom: 10px;
+  &-info {
+    overflow: inherit;
+    justify-content: space-between;
+  }
+  &-offerextended {
+    flex: 2;
+    align-items: flex-start;
+  }
 }
 
 .mat-row-border {
@@ -32,6 +31,14 @@
   padding-bottom: 30px;
   padding-top: 10px;
   cursor: pointer;
+}
+
+
+/* END OF MATERIAL STYLES */
+
+.no-border {
+  border: 0;
+  padding-bottom: 10px;
 }
 
 .text {
@@ -76,18 +83,13 @@
   margin-left: 10px;
 }
 
-.rect-img {
-  position: relative;
-  bottom: 6px;
-  left: 3px;
-}
-
 .hiring-decision {
   flex: 0 0 33.3%;
 }
 
 .date {
   padding-left: 0;
+  white-space: nowrap;
 }
 
 .heading {
@@ -117,6 +119,11 @@
   min-width: 0px;
 }
 
+.item-average {
+  border: 1px solid $item-average-text-color;
+  opacity: .5;
+}
+
 /* START OF DROPDOWN STYLES */
 
 .dropdown {
@@ -138,7 +145,7 @@
 }
 
 .btn.show,.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
-  border: 0;
+  border: 1px solid transparent;
   color: #fff;
   background-color: transparent;
 }

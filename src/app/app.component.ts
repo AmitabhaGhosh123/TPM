@@ -36,22 +36,22 @@ export class AppComponent {
     },
     {
       'candidateDetails': {'name':'Aniket Joshi','designation': 'Director, Piramal Enterprises','city': 'Mumbai'},
-      'interviewSchedule': {'left-arrow': '','right-arrow':'','like-part1-img': '<img src="/assets/like-symbol-part1.png" />','like-part2-img': '<img src="/assets/like-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'Undecided','undecided-img':'<img src="/assets/undecided.png" />','calendar-date-img':'<img src="/assets/calendar.png" />'},
+      'interviewSchedule': {'left-arrow': '','right-arrow':'','candidate-photo':''},
+      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','likeimg':'<img src="/assets/like.png" />','hiringUndecided':'Undecided','undecided-img':'<img src="/assets/undecided.png" />','calendar-date-img':'<img src="/assets/calendar.png" />'},
       'referenceCheck': {'txt1': 7,'txt2': 3},
       'comments': 'Metus etiam. Platea aliquet vulputate. Egestas. Lacinia ultrices. Pharetra. Quisque odio morbi sod tea aliquet vulputate.teamelatea aliquet vulputate. Egestas. Lacinia ultrices QuisqueQuisqueQuisqueQuklloojjdjuee'
     },
     {
       'candidateDetails': {'name':'Kunjan Kumar','designation': 'Director, Housing and Development…','city': 'New Delhi'},
-      'interviewSchedule': {'left-arrow': '','right-arrow':'','like-part1-img': '<img src="/assets/like-symbol-part1.png" />','like-part2-img': '<img src="/assets/like-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'-','hiringUndecided':'No Hire','dislike-part1-img':'<img src="/assets/dislike-symbol-part1.png" />','dislike-part2-img':'<img src="/assets/dislike-symbol-part2.png" />'},
+      'interviewSchedule': {'left-arrow': '','right-arrow':'','candidate-photo':''},
+      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'-','hiringUndecided':'No Hire','likeimg':'<img src="/assets/like.png" />','dislikeimg':'<img src="/assets/dislike.png" />'},
       'referenceCheck': {'txt1': 7,'txt2': 3},
       'comments': 'No Comments'
     },
     {
       'candidateDetails': {'name':'Kunal Kamra','designation': 'Director, Piramal Enterprises','city': 'Mumbai'},
-      'interviewSchedule': {'left-arrow': '','right-arrow':'','like-part1-img': '<img src="/assets/like-symbol-part1.png" />','like-part2-img': '<img src="/assets/like-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'No Hire','dislike-part1-img':'<img src="/assets/dislike-symbol-part1.png" />','dislike-part2-img':'<img src="/assets/dislike-symbol-part2.png" />','calendar-date-img':'<img src="/assets/calendar.png" />'},
+      'interviewSchedule': {'left-arrow': '','right-arrow':'','candidate-photo':''},
+      'hiringInfo': {'hired':'Hire','hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'No Hire','calendar-date-img':'<img src="/assets/calendar.png" />','likeimg':'<img src="/assets/like.png" />','dislikeimg':'<img src="/assets/dislike.png" />'},
       'referenceCheck': {'txt1': 7,'txt2': 3},
       'comments': 'Metus etiam. Platea aliquet vulputate. Egestas. Lacinia ultrices. Pharetra. Quisque odio morbi sod tea aliquet vulputate.teame'
     }
@@ -60,8 +60,8 @@ export class AppComponent {
   candidateDroppedInformation:any[] = [
     {
       'candidateDetails': {'name':'Shridhar Joshi','designation': 'Director, Piramal Enterprises','city': 'Mumbai'},
-      'interviewSchedule': {'left-arrow': '','right-arrow':'','dislike-part1-img':'<img src="/assets/dislike-symbol-part1.png" />','dislike-part2-img':'<img src="/assets/dislike-symbol-part2.png" />','candidate-photo':''},
-      'hiringInfo': {'hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'No Hire','calendar-date-img':'<img src="/assets/calendar.png" />'},
+      'interviewSchedule': {'left-arrow': '','right-arrow':'','candidate-photo':''},
+      'hiringInfo': {'hire-date':'1 Jul 2018','date':'1 Jul 2018','hiringUndecided':'No Hire','calendar-date-img':'<img src="/assets/calendar.png" />','dislikeimg':'<img src="/assets/dislike.png" />'},
       'referenceCheck': {'txt1': 4,'txt2': 3},
       'comments': 'Metus etiam. Platea aliquet vulputate. Egestas. Lacinia ultrices. Pharetra. Quisque odio morbi sod tea aliquet vulputate.teame'
     }
@@ -86,7 +86,6 @@ export class AppComponent {
   swap(event:CdkDragDrop<any[]>): void {
     moveItemInArray(this.candidateInformation, event.previousIndex, event.currentIndex);
     this.candidateInformation = [...this.candidateInformation];
-    console.log(this.candidateInformation);
     this.table.renderRows();
   }
 }
