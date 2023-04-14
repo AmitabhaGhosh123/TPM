@@ -43,7 +43,6 @@
 
 .text {
   &-leads {
-    text-align: center;
     width: 40%;
     float: left;
     @include fontsize(12, 20, 600, 1, 'Nunito Sans');
@@ -60,13 +59,11 @@
 .candidate-name {
   @include fontsize(16, 20, 400, 1, 'Nunito Sans');
   color: $candidate-name-text-color;
-  margin-left: 10px
 }
 
 .candidate-address-designation {
   @include fontsize(14, 20, 400, 1, 'Nunito Sans');
   color: $header-text-color;
-  margin-left: 10px;
 }
 
 .comments {
@@ -100,7 +97,6 @@
 .offer-extended-text {
   @include fontsize(14, 22, 400, 1, 'Nunito Sans');
   color: $header-text-color;
-  margin-left: 10px;
 }
 
 .active {
@@ -127,8 +123,8 @@
 /* START OF DROPDOWN STYLES */
 
 .dropdown {
-  &-toggle {
-    &:after {
+  &-icon {
+    &::after {
       border-width: 0;
     }
   }
@@ -146,7 +142,6 @@
 
 .btn.show,.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
   border: 1px solid transparent;
-  color: #fff;
   background-color: transparent;
 }
 
@@ -155,3 +150,160 @@
 }
 
 /* END OF DROPDOWN STYLES */
+
+.custom-container {
+  max-width: 1330px;
+  margin: 0 auto;
+}
+.candidate-prospects,.candidate-dropped,.candidate-offer-extended {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -12px;
+  border: 1px solid $border-color;
+  background: $background-color;
+}
+
+.candidate-prospects > div{
+  padding: 12px 12px 12px 12px;
+}
+
+.candidate-dropped > div{
+  padding: 12px 12px 12px 12px;
+}
+
+.candidate-offer-extended 
+  > div {
+  padding: 12px 12px 12px 12px;
+}
+
+.candidate-details{
+  flex: 0 0 auto;
+  width: 22%;
+  @include fontsize(14,19,600,1,'Nunito Sans');
+  color: $header-text-color;
+}
+
+.interview-schedule{
+  flex: 0 0 auto;
+  width: 39%;
+  @include fontsize(14,19,600,1,'Nunito Sans');
+  color: $header-text-color;
+}
+
+.reference-check{
+  flex: 0 0 auto;
+  width: 14%;
+  @include fontsize(14,19,600,1,'Nunito Sans');
+  color: $header-text-color;
+}
+
+.comments-header{
+  flex: 0 0 auto;
+  width: 25%;
+  @include fontsize(14,19,600,1,'Nunito Sans');
+  color: $header-text-color;
+}
+
+.comments-data {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.offer-extended-schedule {
+  flex: 0 0 auto;
+  width: 52%;
+  @include fontsize(14,19,600,1,'Nunito Sans');
+  color: $header-text-color;
+}
+
+.interview-carousel-left,.interview-carousel-right{
+  width: 30px;
+}
+
+.txt-leads-value,.txt-captured-value {
+  @include fontsize(18,28,400,1,'Nunito Sans');
+  color: $candidate-name-text-color;
+}
+
+.candidate-prospects-header {
+  border: 1px solid $border-color;
+}
+
+.candidate-prospects-schedule {
+  border: 0;
+}
+
+.candidate-prospects-information {
+  margin-top: 18px;
+  cursor: pointer;
+}
+
+.candidate-dropped-information {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.candidate-offer-extended-information {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.interview-schedule-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.interview-persons {
+  width: calc(100% - 60px);
+}
+
+.offer-extended-section-date {
+  @include fontsize(14,24,400,1,'Nunito Sans');
+  color: $candidate-name-text-color;
+}
+
+.candidate-info {
+  position: relative;
+  padding: 0 38px;
+}
+
+.swap-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+}
+
+@media (max-width: 991px) {
+  .candidate-prospects,.candidate-offer-extended,.candidate-dropped,.interview-schedule-wrapper {
+    display: block;
+  }
+  .rotate-icon {
+    display: block;
+    transform: rotate(90deg);
+  }
+  .cd-right-interview-persons {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .candidate-details,
+  .interview-schedule,
+  .offer-extended-schedule,
+  .comments-header,
+  .reference-check {
+    width: 100%;
+    .cd-left {
+      width: 30%;
+      display: inline-block;
+    }
+    .cd-right {
+      width: 70%;
+      display: inline-block;
+    }
+  }
+  
+}

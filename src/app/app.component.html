@@ -1,4 +1,4 @@
-<div class="heading mb-2 mx-2">Offer Extended</div>
+<!-- <div class="heading mb-2 mx-2">Offer Extended</div>
 
 <mat-table class="mat-elevation-z8" [dataSource]="candidateOfferExtended">
   <ng-container matColumnDef="candidateDetails">
@@ -188,13 +188,6 @@
         </ul>
       </div>
 
-      <!-- <ng-container *ngIf="toggleAction">
-        <div class="row row-actions" *ngIf="selectedIndex == i">
-          <div class="box-options">EDIT COMMENT</div>
-          <div class="box-options">HIRE CANDIDATE</div>
-        </div>
-      </ng-container> -->
-
     </mat-cell>
   </ng-container>
 
@@ -286,4 +279,348 @@
   </ng-container>
 
   <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" class="mat-row-border"></mat-row>
-</mat-table>
+</mat-table> -->
+
+<div class="custom-container container" cdkDropList cdkDropListOrientation="vertical" (cdkDropListDropped)="swap($event)">
+  <h4 class="heading">Offer Extended</h4>
+  <div class="candidate-info" *ngFor="let candidate of candidateOfferExtended;let i = index" (click)="selectRow(i)" cdkDrag>
+    <div class="swap-icon" *ngIf="isSelected && selectedIndex == i">
+      <img src="/assets/swap.png"  alt="swap" />
+    </div>
+    <div class="candidate-offer-extended candidate-offer-extended-information">
+      <div class="candidate-details">
+        <div class="candidate-information cd-right">
+          <div class="row">
+            <div class="col-lg-3">
+              <img src="/assets/profile-picture.png" alt="profile picture"/>
+            </div>
+            <div class="col-lg-9">
+              <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offer-extended-schedule">
+        <div class="row">
+          <div class="col-auto">
+            <div class="cd-right">
+              <div class="offer-extended-text">{{candidate.hiringInfo.offerExtended}}</div>
+              <div class="offer-extended-section-date">{{candidate.hiringInfo.offerExtendeDate}}</div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="cd-right">
+              <div class="offer-extended-text">{{candidate.hiringInfo.offerAccepted}}</div>
+              <div class="offer-extended-section-date">{{candidate.hiringInfo.offerAcceptedDate}}</div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="cd-right">
+              <div class="offer-extended-text">{{candidate.hiringInfo.dateOfJoining}}</div>
+              <div class="offer-extended-section-date">{{candidate.hiringInfo.joiningDate}}</div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="cd-right">
+              <div class="offer-extended-text">{{candidate.hiringInfo.joiningStatus}}</div>
+              <div>
+                <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span>
+                    <img src="/assets/icon-rating.png" alt="green rating"/>
+                  </span>
+                </button>
+                <ul class="dropdown-menu rating-menu">
+                  <li><a class="dropdown-item" href="#"><img src="/assets/icon-rating.png" alt="green rating" /></a></li>
+                   <li><a class="dropdown-item item-average" href="#"><img src="/assets/dropdown-arrow-average.png" alt="average rating" /></a></li>
+                   <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-rework.png" alt="rework rating" /></a></li>
+                 </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="cd-right">
+              <div class="offer-extended-text">{{candidate.hiringInfo.backgroundVerification}}</div>
+              <div>
+                <button type="button" class="btn btn-link nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span>
+                    <img src="/assets/icon-rating.png" />
+                  </span>
+                </button>
+                <ul class="dropdown-menu rating-menu">
+                  <li><a class="dropdown-item" href="#"><img src="/assets/icon-rating.png" alt="" /></a></li>
+                   <li><a class="dropdown-item item-average" href="#"><img src="/assets/dropdown-arrow-average.png" alt="" /></a></li>
+                   <li><a class="dropdown-item" href="#"><img src="/assets/dropdown-arrow-rework.png" alt="" /></a></li>
+                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comments-header comments-data d-flex justify-content-between">
+        <div class="cd-right">
+          {{candidate.comments}}
+        </div>
+        <div>
+          <button type="button" class="btn btn-link nav-link dropdown-toggle dropdown-icon" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>
+              <img src="/assets/dots.png" alt="dots"/>
+            </span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+            <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="heading pt-4">Prospects</h4>
+  <div class="candidate-info">
+    <section class="candidate-prospects candidate-prospects-header text-center d-none d-lg-flex">
+      <div class="candidate-details">CANDIDATE DETAILS</div>
+      <div class="interview-schedule">INTERVIEW SCHEDULE</div>
+      <div class="reference-check">REFERENCE CHECK</div>
+      <div class="comments-header">COMMENTS</div>
+    </section>
+  </div>
+  <div class="candidate-info">
+    <section class="candidate-prospects candidate-prospects-schedule d-none d-lg-flex">
+      <div class="candidate-details"></div>
+      <div class="interview-schedule">
+        <div class="interview-schedule-wrapper">
+          <div class="interview-carousel-left">
+            <a href="#" (click)="previousCandidate()">
+              <img src="/assets/left-arrow.png" alt="left arrow"/>
+            </a>
+          </div>
+          <div class="interview-persons">
+            <div class="row">
+              <div class="col-lg-3 col-3" *ngFor="let candidate of candidateInformation;let i = index" 
+               id="candidate{{i}}">
+                <img src="{{candidate.interviewSchedule['candidate-photo']}}" />
+              </div>
+            </div>
+          </div>
+          <div class="interview-carousel-right">
+            <a href="#" (click)="nextCandidate()">
+              <img src="/assets/right-arrow.png" alt="right arrow"/>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      <div class="reference-check">
+        <div class="row">
+          <div class="col-lg-6 text-leads">LEADS</div>
+          <div class="col-lg-6 text-captured">CAPTURED</div>
+        </div>
+      </div>
+      <div class="comments-header"></div>
+    </section>
+  </div>
+
+  <div class="candidate-info" *ngFor="let candidate of candidateInformation;let i = index" (click)="selectRow(i)" cdkDrag>
+    <div class="swap-icon" *ngIf="isSelected && selectedIndex == i">
+      <img src="/assets/swap.png"  alt="swap" />
+    </div>
+    <div class="candidate-prospects candidate-prospects-information">
+      <div class="candidate-details">
+        <div class="cd-left d-lg-none">CANDIDATE DETAILS</div>
+        <div class="candidate-information cd-right">
+          <div class="row">
+            <div class="col-lg-3">
+              <img src="/assets/profile-picture.png" alt="profile picture"/>
+            </div>
+            <div class="col-lg-9">
+              <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="interview-schedule">
+        <div class="d-lg-none">INTERVIEW SCHEDULE</div>
+        <div class="interview-schedule-wrapper">
+         <div class="interview-carousel-left">
+          <div class="d-lg-none">
+            <a href="#" class="rotate-icon px-4 px-lg-0" (click)="previousCandidate()">
+              <img src="/assets/left-arrow.png" alt="left arrow"/>
+            </a>
+          </div>
+         </div>
+         <div class="interview-persons">
+          <div class="row align-items-center">
+            <div class="col-lg-3 col-12 cd-right-interview-persons">
+              <div class="cd-left d-lg-none"><img src="{{candidate.interviewSchedule['candidate-photo']}}" /></div>
+              <div class="cd-right">
+                <div><img src="/assets/like.png" alt="like"/></div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo.hired}}</div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12 cd-right-interview-persons">
+              <div class="cd-left d-lg-none"><img src="{{candidate.interviewSchedule['candidate-photo']}}" /></div>
+              <div class="cd-right">
+                <div></div>
+                <div class="feedback-awaiting">Awaiting</div>
+                <div class="feedback-awaiting">Feedback</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12 cd-right-interview-persons">
+              <div class="cd-left d-lg-none"><img src="{{candidate.interviewSchedule['candidate-photo']}}" /></div>
+              <div class="cd-right cd-right-interview-persons">
+                <div *ngIf="candidate.hiringInfo['undecided-img']" [innerHTML]="candidate.hiringInfo['undecided-img']"></div>
+                <div *ngIf="candidate.hiringInfo.dislikeimg" [innerHTML]="candidate.hiringInfo.dislikeimg"></div>
+                <div class="feedback-awaiting">{{candidate.hiringInfo.hiringUndecided}}</div>
+                <div class="feedback-awaiting">{{candidate.hiringInfo['hire-date']}}</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12 cd-right-interview-persons">
+              <div class="cd-left d-lg-none"><img src="{{candidate.interviewSchedule['candidate-photo']}}" /></div>
+              <div class="cd-right cd-right-interview-persons">
+                <div></div>
+                <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+                <div class="feedback-awaiting">{{candidate.hiringInfo.date}}</div>
+              </div>
+            </div>
+          </div>
+         </div>
+         <div class="interview-carousel-right">
+          <div class="d-lg-none">
+            <a href="#" class="rotate-icon px-4 px-lg-0" (click)="nextCandidate()">
+              <img src="/assets/right-arrow.png" alt="right arrow"/>
+            </a>
+          </div>
+         </div>
+        </div>
+      </div>
+      <div class="reference-check">
+        <div class="d-lg-none">REFERENCE CHECK</div>
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="cd-left d-lg-none">LEADS</div>
+            <div class="cd-right txt-leads-value">
+            {{candidate.referenceCheck.txt1}}
+            </div>
+          </div>
+          <div class="col-lg-6 col-12">
+            <div class="cd-left d-lg-none">CAPTURED</div>
+            <div class="cd-right txt-captured-value">
+            {{candidate.referenceCheck.txt2}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comments-header comments-data d-flex justify-content-between">
+        <div class="cd-left d-lg-none">COMMENTS</div>
+        <div class="cd-right">
+          {{candidate.comments}}
+        </div>
+        <div>
+          <button type="button" class="btn btn-link nav-link dropdown-toggle dropdown-icon" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>
+              <img src="/assets/dots.png" alt="dots"/>
+            </span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+            <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="heading pt-4">Dropped</h4>
+  <div class="candidate-info" *ngFor="let candidate of candidateDroppedInformation;let i = index" (click)="selectRow(i)" cdkDrag>
+    <div class="swap-icon" *ngIf="isSelected && selectedIndex == i">
+      <img src="/assets/swap.png"  alt="swap" />
+    </div>
+    <div class="candidate-dropped candidate-dropped-information">
+      <div class="candidate-details">
+        <div class="candidate-information cd-right">
+          <div class="row">
+            <div class="col-lg-3">
+              <img src="/assets/avatar.png" alt="profile picture"/>
+            </div>
+            <div class="col-lg-9">
+              <div class="candidate-name">{{candidate.candidateDetails.name}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.designation}}</div>
+              <div class="candidate-address-designation">{{candidate.candidateDetails.city}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="interview-schedule">
+        <div class="interview-schedule-wrapper">
+         <div class="interview-carousel-left"></div>
+         <div class="interview-persons">
+          <div class="row align-items-center">
+            <div class="col-lg-3 col-12">
+              <div class="cd-right">
+                <div [innerHTML]= "candidate.hiringInfo.dislikeimg"></div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo.hiringUndecided}}</div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12">
+              <div class="cd-right">
+                <div [innerHTML]= "candidate.hiringInfo.dislikeimg"></div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo.hiringUndecided}}</div>
+                <div class="candidate-address-designation">{{candidate.hiringInfo['hire-date']}}</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12">
+              <div class="cd-right">
+                <div></div>
+                <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+                <div class="feedback-awaiting">{{candidate.hiringInfo.date}}</div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-12">
+              <div class="cd-right">
+                <div></div>
+                <div [innerHTML]="candidate.hiringInfo['calendar-date-img']"></div>
+                <div class="feedback-awaiting">{{candidate.hiringInfo.date}}</div>
+              </div>
+            </div>
+          </div>
+         </div>
+         <div class="interview-carousel-right"></div>
+        </div>
+      </div>
+      <div class="reference-check">
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="cd-right txt-leads-value">
+              {{candidate.referenceCheck.txt1}}
+            </div>
+          </div>
+          <div class="col-lg-6 col-12">
+            <div class="cd-right txt-captured-value">
+              {{candidate.referenceCheck.txt2}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="comments-header comments-data d-flex justify-content-between">
+        <div class="cd-right">
+          {{candidate.comments}}
+        </div>
+        <div>
+          <button type="button" class="btn btn-link nav-link dropdown-toggle dropdown-icon" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>
+              <img src="/assets/dots.png" alt="dots"/>
+            </span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">EDIT COMMENT</a></li>
+            <li><a class="dropdown-item" href="#">HIDE CANDIDATE</a></li>
+           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
